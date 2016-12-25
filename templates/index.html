@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>辅导员测评 - 免面聊</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <form class="wholeForm" action="./" method="post">
+        <label for="username">用户名</label>
+        <input type="text" name="username" value="" placeholder="默认为门户的信息或者录取通知书号">
+
+        <label for="password">密码</label>
+        <input type="password" name="password" value="">
+
+        <input type="submit" value="提交">
+    </form>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    {% if url %}
+        <h2>点击下方地址跳转至测评页面：</h2>
+        <a href="{{url}}">{{ url }}</a>
+    {% endif %}
+
+    <p>
+        本页面仅用于测试，请勿用作任何商业用途~
+    </p>
+
+    <p>Powered By Xichao Geng</p>
+    <p>
+        
+    </p>
+</body>
+
+</html>
