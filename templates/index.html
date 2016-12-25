@@ -9,7 +9,7 @@
 <body>
     <form class="wholeForm" action="./" method="post">
         <label for="username">用户名</label>
-        <input type="text" name="username" value="" placeholder="默认为门户的信息或者录取通知书号">
+        <input type="text" name="username" value="" placeholder="门户信息或录取通知书号">
 
         <label for="password">密码</label>
         <input type="password" name="password" value="">
@@ -18,7 +18,7 @@
     </form>
 
     {% if error %}
-        <p>{{ error }}</p>
+        <p>登陆失败，大部分情况是用户名或者密码错了，再试试吧~</p>
     {% endif %}
 
     {% if url %}
@@ -26,13 +26,16 @@
         <a href="{{url}}">{{ url }}</a>
     {% endif %}
 
+    <hr/>
+
     <p>
         本页面仅用于测试，请勿用作任何商业用途~
     </p>
 
-    <p>Powered By Xichao Geng</p>
-    <p>
-        
+    <p>By Xichao Geng
+        <iframe src="https://ghbtns.com/github-btn.html?user=gengxichao&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></p>
+    <p>This project is open source on Github.
+        <iframe src="https://ghbtns.com/github-btn.html?user=gengxichao&repo=mianliao_counselor&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
     </p>
 </body>
 
