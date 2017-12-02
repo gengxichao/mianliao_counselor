@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import requests
 import json
 
@@ -7,26 +7,19 @@ app = Flask(__name__)
 @app.route('/', methods = ['GET', 'POST'])
 def index():
     if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
+        login_data = json.loads(request.get_data())
 
-        logindata = {
+        username = login_data['username']
+        password = login_data['password']
+        
+        login = {
             "account": username,
             "password": password
         }
+        login_url = "http://prodv1.tjut.cc/api/login/"
+        r = requests.get(login_url, params = login)
 
-        r = requests.get("http://prod.tjut.cc/api/login", params = logindata)
-
-        userstatus = json.loads(r.text)
-
-        if(userstatus['code'] != 1):
-            return render_template('index.html', error = "用户名或密码错误")
-        else:
-            userstatus = userstatus['response']
-            uid = userstatus['uid']
-            token = userstatus['token']
-            url = "http://stage.tjut.cc/login/do_counselor?1=1&uid=" + uid + "&token=" + token
-            return render_template('index.html', url = url)
+        return jsonify(r.json())
 
     return render_template('index.html')
 
